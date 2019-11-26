@@ -2,9 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
     <script src="three.min.js"></script>
@@ -30,6 +28,8 @@
         let controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableZoom = false;
 
+        // Cube Texture Loader
+
         let urls = [
           "posx.jpg",
           "negx.jpg",
@@ -42,12 +42,19 @@
         let loader = new THREE.CubeTextureLoader();
         scene.background = loader.load(urls);
 
+        // sphere
+        let sphereMaterial = new THREE.MeshbasicMaterial();
+        let sphereGeo = new THree.SphereGeometry(350, 50, 50);
+        let sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
+        sphere.position.set(0, 100, 0);
+        scene.add(sphere);
+
         render();
       }
 
       function render() {
         renderer.render(scene, camera);
-        requestAnimationFrame(render);
+        requestAnimationFrame(renderer);
       }
 
       init();
