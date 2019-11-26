@@ -1,6 +1,6 @@
 let scene, camera, renderer;
 
-export function init() {
+function init() {
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(
     70,
